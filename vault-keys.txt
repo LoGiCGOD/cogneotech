@@ -1,9 +1,0 @@
-Unseal Key: qDv1HbGQPIMHGttSFWiCDz/Jg4H31mPJlc2QvIARjYU=
-
-
-CREATE TABLE connection (
-    id UUID PRIMARY KEY,         
-    host VARCHAR(255) NOT NULL,  
-    port INTEGER NOT NULL,      
-    username VARCHAR(255) NOT NULL UNIQUE
-);

@@ -15,14 +15,14 @@ logger = logging.getLogger(__name__)
 # load_dotenv()
 app = FastAPI()
 
-DB_NAME = os.getenv('POSTGRES_DB', 'cogneotech')
-USER = os.getenv('POSTGRES_USER', 'postgres')
-PASSWORD = os.getenv('POSTGRES_PASSWORD', 'password')
-HOST = os.getenv('POSTGRES_HOST', 'db') 
-PORT = os.getenv('POSTGRES_PORT', 5432)
+DB_NAME = os.getenv('POSTGRES_DB')
+USER = os.getenv('POSTGRES_USER')
+PASSWORD = os.getenv('POSTGRES_PASSWORD')
+HOST = os.getenv('POSTGRES_HOST') 
+PORT = os.getenv('POSTGRES_PORT')
 
-VAULT_ADDR = os.getenv('VAULT_ADDR', 'http://vault:8200')
-VAULT_TOKEN = os.getenv('VAULT_TOKEN', 'root')
+VAULT_ADDR = os.getenv('VAULT_ADDR')
+VAULT_TOKEN = os.getenv('VAULT_TOKEN')
 
 
 # vault_client = hvac.Client(url=VAULT_ADDR, token=VAULT_TOKEN)
