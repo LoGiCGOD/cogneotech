@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  # Changed service name to match what the app expects
+  name: db
+spec:
+  selector:
+    app: postgres
+  ports:
+    - port: 5432
+      targetPort: 5432

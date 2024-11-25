@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cogneotech-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cogneotech-app
+  template:
+    metadata:
+      labels:
+        app: cogneotech-app
+    spec:
+      containers:
+      - name: cogneotech-app
+        image: logicgod007/cogneotech:latest
+        ports:
+        - containerPort: 8000
+        envFrom:
+        - configMapRef:
+            name: app-config
+        - secretRef:
+            name: postgres-secret

@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: cogneotech_app
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=cogneotech
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - VAULT_ADDR=http://vault:8200
+      - VAULT_TOKEN=root
+    depends_on:
+      - db
+      - vault
+
+  db:
+    container_name: cogneotech_db
+    image: postgres:13
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_DB=cogneotech
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  vault:
+    container_name: cogneotech_vault
+    image: hashicorp/vault:latest
+    ports:
+      - "8200:8200"
+    environment:
+      - VAULT_DEV_ROOT_TOKEN_ID=root
+      - VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:8200
+      - VAULT_ADDR=http://vault:8200
+    cap_add:
+      - IPC_LOCK
+    command: server -dev
+
+volumes:
+  postgres_data:

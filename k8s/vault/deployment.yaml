@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vault
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vault
+  template:
+    metadata:
+      labels:
+        app: vault
+    spec:
+      containers:
+      - name: vault
+        image: hashicorp/vault:latest
+        ports:
+        - containerPort: 8200
+        envFrom:
+        - configMapRef:
+            name: vault-config
+        args:
+        - "server"
+        - "-dev"
