@@ -238,5 +238,4 @@ def get_connection(connection_id: str):
         logger.error(f"Unexpected error in get_connection: {str(e)}")
         raise HTTPException(status_code=500, detail="Internal Server Error")
     
-
-
+##aasdadas
