@@ -26,10 +26,10 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/cogneotech:${{ github.sha }} .
-        docker tag ${{ secrets.DOCKERHUB_USERNAME }}/cogneotech:${{ github.sha }} ${{ secrets.DOCKER_USERNAME }}/cogneotech:latest
+        docker build -t logicgod007/cogneotech:${{ github.sha }} .
+        docker tag logicgod007/cogneotech:${{ github.sha }} logicgod007/cogneotech:latest
 
     - name: Push Docker image
       run: |
-        docker push ${{ secrets.DOCKERHUB_USERNAME }}/cogneotech:${{ github.sha }}
-        docker push ${{ secrets.DOCKERHUB_USERNAME }}/cogneotech:latest
+        docker push logicgod007/cogneotech:${{ github.sha }}
+        docker push logicgod007/cogneotech:latest
